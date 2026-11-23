@@ -1,16 +1,7 @@
-# IntelliJ IDEA
+__pycache__/
+*.pyc
+.runtime_classes/
+*.class
 .idea/
 *.iml
-
-# Java build output
-out/
-target/
-build/
-*.class
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Logs
-*.log
+.streamlit/secrets.toml
