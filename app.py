@@ -69,7 +69,7 @@ def start_java_backend():
             log_text = JAVA_LOG.read_text(encoding="utf-8", errors="replace") if JAVA_LOG.exists() else ""
             raise RuntimeError("Java backend stopped during startup.\n" + log_text[-5000:])
 
-        for port in range(8765, 8766):
+        for port in [8765]:
             base_url = f"http://127.0.0.1:{port}"
             try:
                 response = requests.get(base_url + "/api/state", timeout=0.5)
@@ -231,19 +231,16 @@ with left:
     slot_columns = st.columns(3)
     for index, slot in enumerate(slots):
         occupied = slot.get("occupied", False)
-        vehicle = slot.get("vehicle", "")
         slot_number = slot.get("number", index + 1)
-        reg = safe(vehicle)
+        reg = safe(slot.get("vehicle", ""))
         vehicle_type = safe(slot.get("type", ""))
-        owner = "Not collected"
-        entry_time = "Current session"
         if occupied:
             icon = "⚡" if vehicle_type == "Electric Car" else ("🏍️" if vehicle_type == "Bike" else "🚘")
             card = f"""
               <div class="slot-card occupied">
                 <div class="slot-head"><span class="slot-num">SLOT {slot_number:02d}</span><span class="slot-status busy">OCCUPIED</span></div>
                 <div class="slot-reg">{icon} {reg}</div>
-                <div class="slot-meta">Type: {vehicle_type}<br>Owner: {owner}<br>Entry: {entry_time}</div>
+                <div class="slot-meta">Type: {vehicle_type}</div>
               </div>
             """
         else:
@@ -268,7 +265,10 @@ with right:
         entry_submitted = st.form_submit_button("📥 Park Vehicle / Enqueue", use_container_width=True)
     if entry_submitted:
         try:
-            result = api_post(BASE_URL, "/api/entry", {"registration": reg_number, "type": vehicle_type})
+            result = api_post(BASE_URL, "/api/entry", {
+                "registration": reg_number,
+                "type": vehicle_type,
+                })
             flash_and_rerun(result.get("message", "Entry request processed."), "success" if result.get("ok") else "warning")
         except requests.RequestException as exc:
             flash_and_rerun(f"Entry request failed: {exc}", "error")
@@ -331,7 +331,7 @@ with st.expander("📚 Data Structures & Time Complexity", expanded=False):
         """
         - **HashMap (`HashMap<String, ParkingRecord>`)**: maps a vehicle registration number to its parking record. Average lookup, insertion, and deletion are **O(1)**.
         - **HashSet (`HashSet<Integer>`)**: tracks occupied slot numbers and avoids allocating the same slot twice. Average add, remove, and contains are **O(1)**.
-        - **Custom Queue (ArrayList + front index)**: new waiting vehicles join at the rear; the first waiting vehicle leaves from the front. Enqueue and dequeue are **O(1)**.
+        - **Custom Queue (singly linked FIFO)**: new waiting vehicles join at the rear; the first waiting vehicle leaves from the front. Enqueue and dequeue are **O(1)**.
         - **Finding an available slot** scans the 12 fixed slots, so it is **O(n)** in the number of slots.
         - **Searching the waiting queue** traverses the linked nodes, so it is **O(w)** in the number of waiting vehicles.
         """
