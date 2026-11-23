@@ -1,5 +1,6 @@
 # Smart Parking Lot Management Simulator
 
+[![Live Dashboard](https://img.shields.io/badge/Live%20Dashboard-Open%20App-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://smart-parking-lot-management-simulator-8lazs4ajbajqjjbu4ckzt8.streamlit.app/)
 A beginner-friendly, browser-based Java project for **CSM228 – Data Structures**. It simulates a 12-slot parking lot and demonstrates three core data structures through real operations.
 
 ## Data Structures Demonstrated
