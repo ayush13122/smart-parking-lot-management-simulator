@@ -13,7 +13,7 @@ In a busy parking area, manually assigning parking slots and managing vehicles w
 1. Simulate vehicle entry and exit in a 12-slot parking lot.
 2. Use a HashMap to find a parked vehicle's slot.
 3. Use a HashSet to track occupied slots and prevent duplicate slot allocation.
-4. Use a custom FIFO Queue to manage vehicles waiting for parking.
+4. Use a custom FIFO Queue backed by an ArrayList and a front index to manage vehicles waiting for parking.
 5. Display the data structure state through a browser-based interface.
 
 ## Working Methodology
@@ -41,12 +41,12 @@ In a busy parking area, manually assigning parking slots and managing vehicles w
 |---|---|
 | HashMap | Vehicle registration number to parking record |
 | HashSet | Set of occupied slot numbers |
-| Custom Queue | FIFO order of vehicles waiting for an available slot |
+| Custom Queue | ArrayList plus front index; preserves FIFO order without using Java's built-in Queue |
 
 ## Complexity
 - HashMap lookup: O(1) average
 - HashSet membership/add/remove: O(1) average
-- Linked queue enqueue/dequeue: O(1)
+- Custom ArrayList queue enqueue: amortized O(1); dequeue: O(1)
 - Scan for a free slot: O(n), where n is the number of parking slots
 - Search within waiting queue: O(w), where w is the number of waiting vehicles
 
