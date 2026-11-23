@@ -33,7 +33,7 @@ def start_java_backend():
     java = shutil.which("java")
     if not javac or not java:
         raise RuntimeError(
-            "Java JDK was not found. Make sure packages.txt installs openjdk-17-jdk-headless."
+            "Java JDK was not found. Make sure packages.txt installs openjdk-21-jdk-headless."
         )
 
     CLASS_DIR.mkdir(exist_ok=True)
