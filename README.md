@@ -56,7 +56,7 @@ This scenario demonstrates FIFO queue behavior.
 
 - HashMap lookup: O(1) average
 - HashSet add/remove/contains: O(1) average
-- Custom ArrayList-based FIFO queue with a front index enqueue/dequeue: O(1)
+- Custom ArrayList-based FIFO queue: enqueue is amortized O(1), dequeue is O(1)
 - Finding the first available slot by scanning: O(n)
 - Searching the waiting queue: O(n)
 
