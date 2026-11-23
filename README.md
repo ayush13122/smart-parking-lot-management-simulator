@@ -8,7 +8,7 @@ A beginner-friendly, browser-based Java project for **CSM228 – Data Structures
 |---|---|---|
 | HashMap | `HashMap<String, ParkingRecord>` | Maps vehicle registration numbers to parking records |
 | HashSet | `HashSet<Integer>` | Tracks occupied parking slots |
-| Queue (FIFO) | Custom linked-list queue | Maintains the order of waiting vehicles |
+| Queue (FIFO) | Custom ArrayList-based FIFO queue with a front index | Maintains the order of waiting vehicles |
 
 ## Features
 
@@ -56,7 +56,7 @@ This scenario demonstrates FIFO queue behavior.
 
 - HashMap lookup: O(1) average
 - HashSet add/remove/contains: O(1) average
-- Custom linked-list queue enqueue/dequeue: O(1)
+- Custom ArrayList-based FIFO queue with a front index enqueue/dequeue: O(1)
 - Finding the first available slot by scanning: O(n)
 - Searching the waiting queue: O(n)
 
