@@ -311,7 +311,7 @@ with bottom_left:
         for vehicle in queue:
             st.markdown(
                 f"**#{vehicle.get('position', '')} · {safe(vehicle.get('registration', ''))}**  "
-                f"<span class='small-muted'>| {safe(vehicle.get('type', ''))} · {safe('Not collected')}</span>",
+                f"<span class='small-muted'>| {safe(vehicle.get('type', ''))}</span>",
                 unsafe_allow_html=True,
             )
     else:
@@ -331,7 +331,7 @@ with st.expander("📚 Data Structures & Time Complexity", expanded=False):
         """
         - **HashMap (`HashMap<String, ParkingRecord>`)**: maps a vehicle registration number to its parking record. Average lookup, insertion, and deletion are **O(1)**.
         - **HashSet (`HashSet<Integer>`)**: tracks occupied slot numbers and avoids allocating the same slot twice. Average add, remove, and contains are **O(1)**.
-        - **Custom Queue (singly linked FIFO)**: new waiting vehicles join at the rear; the first waiting vehicle leaves from the front. Enqueue and dequeue are **O(1)**.
+        - **Custom Queue (ArrayList + front index)**: new waiting vehicles join at the rear; the first waiting vehicle leaves from the front. Enqueue and dequeue are **O(1)**.
         - **Finding an available slot** scans the 12 fixed slots, so it is **O(n)** in the number of slots.
         - **Searching the waiting queue** traverses the linked nodes, so it is **O(w)** in the number of waiting vehicles.
         """
