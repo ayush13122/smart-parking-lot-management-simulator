@@ -8,7 +8,7 @@
 - `requirements.txt` installs Streamlit and Requests.
 - `.streamlit/config.toml` applies the dark dashboard theme.
 
-The Java backend is the source of truth for vehicle allocation, HashMap lookup, HashSet occupancy tracking, and the custom linked-list FIFO queue. Python is used only for the hosted dashboard and API calls.
+The Java backend is the source of truth for vehicle allocation, HashMap lookup, HashSet occupancy tracking, and the custom ArrayList-based FIFO queue with a front index. Python is used only for the hosted dashboard and API calls.
 
 ## Deploy
 
