@@ -4,7 +4,7 @@
 
 - `src/SmartParkingLotSimulator.java` contains the Java DSA implementation and local HTTP API.
 - `app.py` provides the Streamlit dashboard and communicates with the Java process on the server.
-- `packages.txt` installs Java 17 on Streamlit Community Cloud.
+- `packages.txt` installs Java 21 on Streamlit Community Cloud.
 - `requirements.txt` installs Streamlit and Requests.
 - `.streamlit/config.toml` applies the dark dashboard theme.
 
@@ -24,7 +24,7 @@ Streamlit Cloud reads Python dependencies from `requirements.txt` and system pac
 
 ## Run Locally
 
-Requirements: Python 3.9+ and JDK 17+.
+Requirements: Python 3.9+ and JDK 17+ locally (JDK 21 on Streamlit Cloud).
 
 ```bash
 pip install -r requirements.txt
